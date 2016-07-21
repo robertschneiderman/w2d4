@@ -60,13 +60,12 @@ def anagrams_one_hash(w1, w2)
   letter_count = Hash.new(0)
   concat = w1 + w2
 
-  w1.chars.each do |char|
+  concat.chars.each do |char|
     letter_count[char] += 1
   end
-  w2.chars.each do |char|
-    letter_count[char] -= 1
-  end
-  letter_count.values.all? {|num| num == 0 }
+  p letter_count
+  letter_count.keys.count == w1.length &&
+  letter_count.values.all? {|num| num % 2 == 0 }
 end
 
-p anagrams_one_hash("ellvis", "llives")    #=> true
+p anagrams_one_hash("ellvis", "mmives")    #=> true
